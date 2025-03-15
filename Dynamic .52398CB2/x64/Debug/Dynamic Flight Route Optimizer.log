@@ -1,0 +1,4 @@
+﻿   Qt/MSBuild: 3.3.1.1
+   Qt: 6.10.0
+  window.cpp
+D:\Development\Projects\Software\C++\Dynamic Flight Route Optimizer\window.cpp(22,3): error C2065: 'qApp': undeclared identifier
