@@ -18,3 +18,13 @@
         <file>import.qml</file>
     </qresource>
 </RCC>
+<RCC>
+    <qresource prefix="/">
+        <file>import.qml</file>
+    </qresource>
+</RCC>
+<RCC>
+    <qresource prefix="/">
+        <file>import.qml</file>
+    </qresource>
+</RCC>
