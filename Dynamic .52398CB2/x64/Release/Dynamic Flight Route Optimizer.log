@@ -1,10 +1,11 @@
 ﻿   Qt/MSBuild: 3.3.1.1
   Reading Qt configuration (D:/Development/Projects/Libraries/Qt/6.10.0/msvc2022_64/bin/qmake)
    Qt: 6.10.0
-  jsoncpp.cpp
+  window.cpp
+D:\Development\Projects\Software\C++\Dynamic Flight Route Optimizer\window.cpp(57,20): warning C4018: '<=': signed/unsigned mismatch
   Generating code
-  345 of 1421 functions (24.3%) were compiled, the rest were copied from previous compilation.
-    1 functions were new in current compilation
-    61 functions had inline decision re-evaluated but remain unchanged
+  101 of 1421 functions ( 7.1%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    45 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   Dynamic Flight Route Optimizer.vcxproj -> D:\Development\Projects\Software\C++\Dynamic Flight Route Optimizer\x64\Release\Dynamic Flight Route Optimizer.exe
