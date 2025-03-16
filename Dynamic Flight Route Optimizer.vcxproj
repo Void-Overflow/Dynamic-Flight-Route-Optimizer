@@ -105,9 +105,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="x64\Release\libraries\jsoncpp\dist\jsoncpp.cpp" />
     <QtUic Include="window.ui" />
     <QtMoc Include="window.h" />
-    <ClCompile Include="libraries\jsoncpp\dist\jsoncpp.cpp" />
     <ClCompile Include="window.cpp" />
     <ClCompile Include="main.cpp">
       <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">input</DynamicSource>
@@ -117,13 +117,13 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="libraries\jsoncpp\dist\json\json-forwards.h" />
-    <ClInclude Include="libraries\jsoncpp\dist\json\json.h" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="x64\Release\data\aircraft.json" />
     <None Include="x64\Release\data\cities.json" />
     <None Include="x64\Release\map.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="x64\Release\libraries\jsoncpp\dist\json\json-forwards.h" />
+    <ClInclude Include="x64\Release\libraries\jsoncpp\dist\json\json.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

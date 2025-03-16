@@ -37,17 +37,9 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="libraries\jsoncpp\dist\jsoncpp.cpp">
+    <ClCompile Include="x64\Release\libraries\jsoncpp\dist\jsoncpp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="libraries\jsoncpp\dist\json\json.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="libraries\jsoncpp\dist\json\json-forwards.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="x64\Release\data\cities.json">
@@ -59,5 +51,13 @@
     <None Include="x64\Release\map.html">
       <Filter>Resource Files</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="x64\Release\libraries\jsoncpp\dist\json\json-forwards.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="x64\Release\libraries\jsoncpp\dist\json\json.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
