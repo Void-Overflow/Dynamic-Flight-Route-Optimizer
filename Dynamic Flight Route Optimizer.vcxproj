@@ -73,7 +73,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\Development\Projects\Software\C++\Dynamic Flight Route Optimizer\libraries\jsoncpp\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Development\Projects\Software\C++\Dynamic Flight Route Optimizer\x64\Release\libraries\jsoncpp\include</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
@@ -117,13 +117,13 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="data\aircraft.json" />
-    <None Include="data\cities.json" />
-    <None Include="map.html" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="libraries\jsoncpp\dist\json\json-forwards.h" />
     <ClInclude Include="libraries\jsoncpp\dist\json\json.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="x64\Release\data\aircraft.json" />
+    <None Include="x64\Release\data\cities.json" />
+    <None Include="x64\Release\map.html" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

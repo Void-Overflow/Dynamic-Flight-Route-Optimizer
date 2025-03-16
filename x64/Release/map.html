@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Flight Route Optimizer Map</title>
+    <link rel="stylesheet" href="libraries/leaflet/leaflet.css" />
+    <script src="libraries/leaflet/leaflet.js"></script>
+    <script src="libraries/leaflet/leaflet.geodesic.js"></script>
+    <script src="libraries/leaflet/leaflet.rainviewer.js"></script>
+    <script src="map.js"></script>
+    <style>
+        #map {
+            height: 100vh;
+            width: 100vw;
+        }
+
+        /* Enhanced Weather Styling */
+        .enhanced-weather {
+            filter: hue-rotate(-15deg) contrast(2) saturate(2.5) brightness(0.9);
+            mix-blend-mode: multiply;
+        }
+
+        .leaflet-control-rainviewer {
+            background: rgba(255, 255, 255, 0.95) !important;
+            border: 2px solid #1a5fb4 !important;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            border-radius: 5px;
+        }
+
+            .leaflet-control-rainviewer button {
+                background: #1a5fb4 !important;
+                border-color: #0d386f !important;
+                color: white !important;
+                font-weight: bold;
+                border-radius: 3px;
+            }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+        let map;
+        let rainViewer;
+        let precipitationLayer;
+        let currentGeodesic = null;
+
+        function initMap() {
+            map = L.map('map').setView([40.7128, -74.0060], 5);
+
+            // Base OSM layer
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+
+            // Custom RainViewer radar configuration
+            rainViewer = new L.control.rainviewer({
+                position: 'topright',
+                opacity: 0.9,
+                animationInterval: 500,
+                colorScheme: [
+                    { threshold: 0, color: 'rgba(33, 102, 172, 0.8)' },
+                    { threshold: 15, color: 'rgba(0, 181, 226, 0.9)' },
+                    { threshold: 30, color: 'rgba(0, 211, 255, 1.0)' },
+                    { threshold: 45, color: 'rgba(106, 74, 217, 0.9)' }
+                ]
+            });
+
+            // Enhanced precipitation layer (replace YOUR_API_KEY)
+            precipitationLayer = L.tileLayer(
+                'https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid=0c50e8b14c86a066ba5d9e487999b6b3', {
+                opacity: 0.85,
+                className: 'enhanced-weather'
+            }
+            );
+        }
+
+        // Weather control functions
+        function showWeather() {
+            try {
+                if (rainViewer && !map.hasLayer(rainViewer)) {
+                    rainViewer.addTo(map);
+                }
+                if (precipitationLayer && !map.hasLayer(precipitationLayer)) {
+                    precipitationLayer.addTo(map);
+                }
+            } catch (e) {
+                console.error('Weather overlay error:', e);
+            }
+        }
+
+        function hideWeather() {
+            try {
+                if (rainViewer && map.hasLayer(rainViewer)) {
+                    map.removeControl(rainViewer);
+                }
+                if (precipitationLayer && map.hasLayer(precipitationLayer)) {
+                    map.removeLayer(precipitationLayer);
+                }
+            } catch (e) {
+                console.error('Weather removal error:', e);
+            }
+        }
+
+        //Line function
+        function drawLine(lat1, lon1, lat2, lon2) {
+            try {
+                // Convert strings to numbers
+                lat1 = parseFloat(lat1);
+                lon1 = parseFloat(lon1);
+                lat2 = parseFloat(lat2);
+                lon2 = parseFloat(lon2);
+
+                const line = L.polyline(
+                    [[lat1, lon1], [lat2, lon2]],
+                    { color: 'red', weight: 3 }
+                ).addTo(map);
+
+                lines.push(line); // Store reference
+                map.fitBounds(line.getBounds()); // Zoom to line
+            } catch (e) {
+                console.error("Draw line error:", e);
+            }
+        }
+
+
+        // Geodesic function
+        function drawGeodesic(lat1, lon1, lat2, lon2) {
+            try {
+                if (currentGeodesic) {
+                    map.removeLayer(currentGeodesic);
+                }
+
+                currentGeodesic = L.geodesic([[lat1, lon1], [lat2, lon2]], {
+                    color: '#ff0000',
+                    weight: 3,
+                    steps: 50,
+                    wrap: false
+                }).addTo(map);
+
+                map.fitBounds(currentGeodesic.getBounds());
+            } catch (e) {
+                console.error("Geodesic error:", e);
+            }
+        }
+
+        // Initialize map when loaded
+        window.onload = initMap;
+    </script>
+</body>
+</html>

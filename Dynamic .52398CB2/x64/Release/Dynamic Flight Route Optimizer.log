@@ -1,4 +1,13 @@
 ﻿   Qt/MSBuild: 3.3.1.1
   Reading Qt configuration (D:/Development/Projects/Libraries/Qt/6.10.0/msvc2022_64/bin/qmake)
    Qt: 6.10.0
+  jsoncpp.cpp
+  window.cpp
+  main.cpp
+D:\Development\Projects\Software\C++\Dynamic Flight Route Optimizer\window.cpp(57,20): warning C4018: '<=': signed/unsigned mismatch
+  moc_window.cpp
+  Generating code
+  Previous IPDB and IOBJ mismatch, fall back to full compilation.
+  All 1421 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
   Dynamic Flight Route Optimizer.vcxproj -> D:\Development\Projects\Software\C++\Dynamic Flight Route Optimizer\x64\Release\Dynamic Flight Route Optimizer.exe

@@ -42,22 +42,22 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="map.html">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="data\aircraft.json">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="data\cities.json">
-      <Filter>Resource Files</Filter>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="libraries\jsoncpp\dist\json\json.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="libraries\jsoncpp\dist\json\json-forwards.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="x64\Release\data\cities.json">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="x64\Release\data\aircraft.json">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="x64\Release\map.html">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

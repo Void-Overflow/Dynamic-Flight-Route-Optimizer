@@ -12,7 +12,6 @@
 #include <QFont>
 #include <QApplication>
 
-
 #include <json/json.h>
 #include <fstream>
 
@@ -41,7 +40,7 @@ Window::Window(QWidget* parent) : QMainWindow(parent)
 	calculateButton = new QPushButton("Calculate Route", topPanel);
 
 	//read city data from JSON file
-	std::ifstream citiesJsonFile(QDir::currentPath().toStdString() + "/data/cities.json");
+	std::ifstream citiesJsonFile(QCoreApplication::applicationDirPath().toStdString() + "/data/cities.json");
 	Json::Value citiesJson;
 	Json::CharReaderBuilder jsonBuilder;
 
@@ -55,7 +54,7 @@ Window::Window(QWidget* parent) : QMainWindow(parent)
 			qDebug() << err;
 	}
 	QList<QString> citiesAsList;
-	for (int i = 0; i < citiesJson.size(); i++) {
+	for (int i = 1; i <= citiesJson.size(); i++) {
 		cities.append(City(
 			QString::fromStdString(citiesJson[std::to_string(i)]["city"].asString()), 
 			citiesJson[std::to_string(i)]["lat"].asFloat(), 
@@ -160,7 +159,7 @@ Window::Window(QWidget* parent) : QMainWindow(parent)
 	centralWidget->setStyleSheet(styleSheet);
 
 	// Web view initialization
-	QString mapPath = QDir::currentPath() + "/map.html";
+	QString mapPath = QCoreApplication::applicationDirPath() + "/map.html";
 	webView->setUrl(QUrl::fromLocalFile(mapPath));
 
 	// Set window properties

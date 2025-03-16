@@ -29,8 +29,6 @@ class Window : public QMainWindow {
 public:
 	explicit Window(QWidget* parent = nullptr);
 
-	
-
 	void drawLine(double lat1, double lon1, double lat2, double lon2);
 	void drawGeodesic(double lat1, double lon1, double lat2, double lon2);
 
